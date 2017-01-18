@@ -1,13 +1,12 @@
 package com.amap.android_map_fragment;
 
-import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     private FragmentA fragmentA;
@@ -15,23 +14,21 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private FragmentC fragmentC;
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
-    private TextView textView1, textView2,textView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setContentView(R.layout.activity_main);
         initView();
         initFragment();
+
     }
 
     private void initView() {
         findViewById(R.id.tab1).setOnClickListener(this);
         findViewById(R.id.tab2).setOnClickListener(this);
         findViewById(R.id.tab3).setOnClickListener(this);
-//        textView1 = (TextView)findViewById(R.id.tv1);
-//        textView2 = (TextView)findViewById(R.id.tv2);
-//        textView3 = (TextView)findViewById(R.id.tv3);
     }
 
     private void initFragment() {
@@ -60,24 +57,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (view.getId()) {
             case R.id.tab1 :
                 replaceFragment(fragmentA);
-//                resetTab();
-//                textView1.setTextColor(Color.BLUE);
+
                 break;
             case R.id.tab2 :
                 replaceFragment(fragmentB);
-//                resetTab();
-//                textView2.setTextColor(Color.BLUE);
+
                 break;
             case R.id.tab3 :
                 replaceFragment(fragmentC);
-//                resetTab();
-//                textView3.setTextColor(Color.BLUE);
                 break;
         }
     }
-//    private void resetTab() {
-//        textView1.setTextColor(Color.BLACK);
-//        textView2.setTextColor(Color.BLACK);
-//        textView3.setTextColor(Color.BLACK);
-//    }
+
+    private void hideFragment(FragmentTransaction fragmentTransaction) {
+        if(fragmentA != null){
+            fragmentTransaction.hide(fragmentA);
+        }
+        if(fragmentB != null){
+            fragmentTransaction.hide(fragmentB);
+        }
+        if(fragmentC != null){
+            fragmentTransaction.hide(fragmentC);
+        }
+    }
+
 }
