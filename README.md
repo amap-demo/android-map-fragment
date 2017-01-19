@@ -16,8 +16,16 @@
 ![Screenshot]( https://raw.githubusercontent.com/amap-demo/android-map-fragment/master/apk/download.png) 
 
 ## 核心难点 ##
-Fragment中地图用TextureMapView，TextureMapView可以有效实现Fragment切换动画效果。
+本示例中的地图用采用TextureMapView，TextureMapView可以有效实现Fragment切换动画效果。
 
-Demo中的Fragment切换采用replace方法，可也可以采用hide/show方法。
+本示例中的Fragment切换采用replace方法，可也可以采用hide/show方法。
 
-注意：在采用hide/show方法时，可能会消耗内存，而且注意地图要用TextureMapView实现，MapView是SurfaceView，不可以叠加。
+MapView和TextureMapView的区别在于：TextureMapView是一个TextureView而MapView是一个GLSurfaceView。
+
+在Fragment切换时，如果采用hide/show方式，地图是叠在一起的，GlSurfaceView叠放会出现穿透现象，建议使用TextureMapView避免这个问题。
+
+采用TextureMapView，可以避免Fragment切换动画的黑边，或者是replace时有黑屏闪一下的问题。
+
+如果想采用hide/show方法切换Fragment，请注意一下内存的消耗。
+
+
