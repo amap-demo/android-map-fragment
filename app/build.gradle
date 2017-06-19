@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.amap.android_map_fragment"
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -26,6 +26,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.amap.api:map3d-native:latest.integration'
-    compile 'com.amap.api:map3d:latest.integration'
+//    compile 'com.amap.api:map3d-native:latest.integration'
+//    compile 'com.amap.api:map3d:latest.integration'
+
+    compile 'com.amap.api:3dmap:latest.integration'
 }
