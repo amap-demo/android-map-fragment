@@ -2,11 +2,12 @@ package com.amap.android_map_fragment;
 
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     private FragmentA fragmentA;
@@ -48,7 +49,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 R.anim.slide_in_bottom,
                 R.anim.slide_out_bottom);
         fragmentTransaction.replace(R.id.content_container, fragment, fragment.getClass().getName());
-//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 

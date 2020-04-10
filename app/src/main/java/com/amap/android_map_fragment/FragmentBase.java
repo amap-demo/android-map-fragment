@@ -1,8 +1,6 @@
 package com.amap.android_map_fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +12,9 @@ import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 
 import java.lang.reflect.Field;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  *
@@ -82,14 +83,20 @@ public abstract class FragmentBase extends Fragment {
         textureMapView.onSaveInstanceState(outState);
     }
 
+    @Override
+    public void onDestroyView() {
+        setCameraPosition(aMap.getCameraPosition());
+        textureMapView.onDestroy();
+        super.onDestroyView();
+    }
+
     /**
      * 方法必须重写
      */
     @Override
     public void onDestroy() {
-        setCameraPosition(aMap.getCameraPosition());
+
         super.onDestroy();
-        textureMapView.onDestroy();
     }
     @Override
     public void onDetach() {
