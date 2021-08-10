@@ -89,8 +89,15 @@ public abstract class FragmentBase extends Fragment {
     public void onDestroy() {
         setCameraPosition(aMap.getCameraPosition());
         super.onDestroy();
-        textureMapView.onDestroy();
     }
+    
+    @Override
+    public void onDestroyView() {
+        textureMapView.onDestroy();
+        super.onDestroyView();
+    }
+
+    
     @Override
     public void onDetach() {
         super.onDetach();
